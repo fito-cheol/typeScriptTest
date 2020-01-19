@@ -19,8 +19,13 @@ import { mount } from "@vue/test-utils";
 })
 export default class Product extends Vue {
   // 데이터 선언
+  // '!'는 초기화 속성에 붙이는 prefix (타입스크립트에게 미리 알려주는 역할)
   pageName!: string;
   product!: ProductInfo;
-  @Prop(String) inputMessage: string;
+  @Prop(String) inputMessage!: string;
+
+  private mounted() {
+    console.log(this.inputMessage);
+  }
 }
 </script>
