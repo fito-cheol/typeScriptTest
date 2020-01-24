@@ -3,22 +3,13 @@
     <h1>{{ pageName }}</h1>
     <h2>{{ inputMessage }} {{ computedMsg }}</h2>
     <h2>{{ inputMessage2 }}</h2>
+    <h1>{{ factoryData }}2{{ materialName }}</h1>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
-import {
-  mapMutations,
-  mapActions,
-  mapState,
-  createNamespacedHelpers
-} from "vuex";
-const {
-  mapState: mapProductState,
-  mapMutations: mapProductMutations,
-  mapActions: mapProductActions
-} = createNamespacedHelpers("product");
+import { mapMutations, mapActions, mapState } from "vuex";
 import { ProductInfo } from "../../store/modules/product";
 import { mount } from "@vue/test-utils";
 
@@ -28,12 +19,10 @@ class Person {
 
 // https://github.com/vuejs/vue-class-component
 @Component({
-  // computed: mapState(
-  //   "product", // product module
-  //   ["pageName", "product"] // state
-  // )
   computed: {
-    ...mapProductState(["pageName", "product"])
+    ...mapState("material", ["materialName"]),
+    ...mapState("product", ["pageName", "product"]),
+    ...mapState("factory", ["factoryData"])
   }
 })
 export default class Product extends Vue {

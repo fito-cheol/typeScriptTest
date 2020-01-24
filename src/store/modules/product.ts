@@ -11,7 +11,7 @@ interface State {
 }
 
 export const state: State = {
-  pageName: "상품 페이지",
+  pageName: "상품 3페이지2",
   product: {
     productNo: 0,
     name: "상품 이름"
